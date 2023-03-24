@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ModernbancInput">
+        <attr name="mbi_textColor" format="color" />
+        <attr name="mbi_hint" format="string" />
+        <attr name="mbi_hintTextColor" format="color" />
+        <attr name="mbi_maxLines" format="integer" />
+        <attr name="mbi_singleLine" format="boolean" />
+        <attr name="mbi_inputType" format="integer" />
+        <!-- Add more custom attributes as needed -->
+    </declare-styleable>
+</resources>
