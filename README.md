@@ -1,21 +1,25 @@
-# To get a Git project into your build:
+# modernbanc-android
 
-Step 1. Add the JitPack repository to your build file
+The official Android Library for Modernbanc Elements.
 
-gradle
-maven
-sbt
-leiningen
-Add it in your root build.gradle at the end of repositories:
 
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-Step 2. Add the dependency
+##  Installation
 
-	dependencies {
+### Requirements
+- Android 5.0+ (API level 21+)
+- AndroidX
+
+### Gradle
+To install `modernbanc-android` add the following to your build.gradle;
+
+```
+repositories {
+	...
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
 	        implementation 'com.github.Modernbanc:modernbanc-android:Tag'
-	}
+}
+```
+	
