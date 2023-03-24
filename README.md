@@ -2,7 +2,6 @@
 
 The official Android Library for Modernbanc Elements.
 
-
 ##  Installation
 
 ### Requirements
@@ -14,12 +13,12 @@ To install `modernbanc-android` add the following to your build.gradle;
 
 ```
 repositories {
-	...
-	maven { url 'https://jitpack.io' }
+    ...
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-	        implementation 'com.github.Modernbanc:modernbanc-android:Tag'
+    implementation 'com.github.Modernbanc:modernbanc-android:Tag'
 }
 ```
 	
