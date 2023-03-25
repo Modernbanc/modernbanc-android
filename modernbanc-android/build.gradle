@@ -4,8 +4,6 @@ plugins {
     id 'maven-publish'
 }
 
-apply plugin: 'maven-publish'
-
 publishing {
     publications {
         release(MavenPublication) {
