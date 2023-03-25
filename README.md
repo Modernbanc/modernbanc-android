@@ -1,6 +1,6 @@
 # modernbanc-android
 
-The official Android Library for Modernbanc Elements.
+Modernbanc Android is an official Android library you can use to securely collect sensitive data from your users and store it in Modernbanc's encrypted vault.
 
 ##  Installation
 
