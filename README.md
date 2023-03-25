@@ -36,23 +36,37 @@ Once the user has entered the details you can create a token from the value in t
 
 ```kotlin
 modernbancInput?.createToken(
-	onResponse = { tokenResponse: CreateTokenResponse? ->
-			// Handle the token response here
-			val token = tokenResponse?.result?.firstOrNull()
-			Log.d("CreateToken", "Token created: ${token?.id}")
-			activity?.runOnUiThread {
-					tokenLabel.text = "Created token with id ${token?.id}"
-			}
-	},
-	onFailure = { error: MdbApiError? ->
-			// Handle the error here
-			Log.e("CreateToken", "Error: ${error?.code} - ${error?.message}")
-			activity?.runOnUiThread {
-					tokenLabel.text = "Oops there was an error ${error.toString()}"
-			}
-	}
+  onResponse = { tokenResponse: CreateTokenResponse? ->
+      // Handle the token response here
+      val token = tokenResponse?.result?.firstOrNull()
+      Log.d("CreateToken", "Token created: ${token?.id}")
+      activity?.runOnUiThread {
+          tokenLabel.text = "Created token with id ${token?.id}"
+      }
+  },
+  onFailure = { error: MdbApiError? ->
+      // Handle the error here
+      Log.e("CreateToken", "Error: ${error?.code} - ${error?.message}")
+      activity?.runOnUiThread {
+          tokenLabel.text = "Oops there was an error ${error.toString()}"
+      }
+  }
 )
 ```
+
+### Validation
+
+We prevent you from accessing input's raw text but if you want to validate the input you set your validation function in the following way:
+
+```kotlin
+val isLongerThan5Characters: (String) -> Boolean = { it.length > 5 }
+input.validationFn = isLongerThan5Characters
+
+input.setText("Hello")
+
+Log.d("Value is currently valid: ", input.isValid.toString()) // Should print `false`
+```
+
 
 ### Demo app
 The project also contains a demo-app, to run it ensure that you create an substitute an API key with 'write' permission for 'secret_token' functionlaity.
