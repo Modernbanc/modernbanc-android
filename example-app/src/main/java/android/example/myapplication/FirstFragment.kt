@@ -26,7 +26,7 @@ class FirstFragment : Fragment() {
 
     private lateinit var parentLayout: LinearLayout
     private lateinit var tokenLabel: TextView
-    private val apiKey = "nsoPZVAk9EXXx2InwRs6qrWEWVfxaRd"
+    private val apiKey = "API key that you can find in your workspace"
     private val apiClient = ModernbancApiClient(apiKey)
     private lateinit var modernbancInput: ModernbancInput
 

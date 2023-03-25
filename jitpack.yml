@@ -1,2 +1,10 @@
 jdk:
   - openjdk11
+
+# To run tests as per official Jitpack guidelines
+before_script:
+  - chmod +x gradlew
+
+# To run tests as per official Jitpack guidelines
+script:
+  - ./gradlew build connectedCheck
