@@ -74,4 +74,4 @@ Log.d("Value is currently valid: ", input.isValid.toString()) // Should print `f
 
 ### Demo app
 
-The project also contains a demo-app, to run it ensure that you create an substitute an API key with 'write' permission for 'secret_token' functionlaity.
+The project also contains a demo-app, to run it ensure that you create an substitute an API key with **write** permission for **secret_token** functionlaity.
