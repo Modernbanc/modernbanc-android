@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.library' version '7.4.2'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
@@ -9,7 +9,7 @@ publishing {
         release(MavenPublication) {
             groupId = "com.github.modernbanc"
             artifactId = "modernbanc-android"
-            version = "0.0.2"
+            version = "0.0.3"
         }
 
     }
