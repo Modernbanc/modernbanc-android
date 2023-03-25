@@ -18,7 +18,43 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Modernbanc:modernbanc-android:Tag'
+    implementation 'com.github.Modernbanc:modernbanc-android:<tag>'
 }
 ```
-	
+
+## Usage
+This library contains a ModernbancInput component that you can embed into your app. It is a native component that aims to mimic EditText so you can style and customize it to your liking.
+
+To use it initialize a Modernbanc API client and then pass it to the ModernbancInput.
+
+```kotlin
+val apiClient = ModernbancApiClient(apiKey)
+val modernbancInput = ModernbancInput(context = requireContext(), client = apiClient)
+```
+
+Once the user has entered the details you can create a token from the value in the input.
+
+```kotlin
+modernbancInput?.createToken(
+	onResponse = { tokenResponse: CreateTokenResponse? ->
+			// Handle the token response here
+			val token = tokenResponse?.result?.firstOrNull()
+			Log.d("CreateToken", "Token created: ${token?.id}")
+			activity?.runOnUiThread {
+					tokenLabel.text = "Created token with id ${token?.id}"
+			}
+	},
+	onFailure = { error: MdbApiError? ->
+			// Handle the error here
+			Log.e("CreateToken", "Error: ${error?.code} - ${error?.message}")
+			activity?.runOnUiThread {
+					tokenLabel.text = "Oops there was an error ${error.toString()}"
+			}
+	}
+)
+```
+
+### Demo app
+The project also contains a demo-app, to run it ensure that you create an substitute an API key with 'write' permission for 'secret_token' functionlaity.
+
+
