@@ -15,7 +15,7 @@ You can install this library via Jitpack.
 
 To install `modernbanc-android` add the following to your build.gradle;
 
-```groovy
+```gradle
 repositories {
     ...
     maven { url 'https://jitpack.io' }
