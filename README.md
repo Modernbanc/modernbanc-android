@@ -8,7 +8,7 @@ You can install this library via Jitpack.
 
 ### Requirements
 
-- Android 5.0+ (API level 21+)
+- Android 7.0+ (API level 24+)
 - AndroidX
 
 ### Gradle

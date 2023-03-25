@@ -93,7 +93,8 @@ class FirstFragment : Fragment() {
             modernbancInput?.createToken(
                 onResponse = { tokenResponse: CreateTokenResponse? ->
                     // Handle the token response here
-                    Log.d("CreateToken", "Token created: ${tokenResponse?.result?.firstOrNull()?.id}")
+                    val token = tokenResponse?.result?.firstOrNull()
+                    Log.d("CreateToken", "Token created: ${token?.id}")
                     activity?.runOnUiThread {
                         tokenLabel.text = "Created token with id ${tokenResponse?.result?.first()?.id}"
                     }

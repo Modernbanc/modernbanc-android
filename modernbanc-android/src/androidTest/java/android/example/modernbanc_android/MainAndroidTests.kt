@@ -27,5 +27,16 @@ class MainAndroidTests {
         val client = ModernbancApiClient("")
         val input = ModernbancInput(appContext, client = client)
         assertNotNull(input.client)
+
+
+        val isLongerThan5Characters: (String) -> Boolean = { it.length > 5 }
+        input.validationFn = isLongerThan5Characters
+
+        input.setText("Hello")
+        assertFalse(input.isValid)
+
+        input.setText("Hello world")
+        assertTrue(input.isValid)
+
     }
 }

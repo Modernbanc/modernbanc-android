@@ -2,7 +2,9 @@ package android
 
 import android.content.Context
 import android.graphics.Color
+import android.text.Editable
 import android.text.InputType
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
@@ -28,6 +30,9 @@ class ModernbancInput @JvmOverloads constructor(
 
     private val editText: AppCompatEditText
 
+    var isValid = false
+    var validationFn: ((String) -> Boolean)? = null
+
     init {
         // Retrieve the attribute values using the TypedArray class
         val typedArray = context.obtainStyledAttributes(attrs,
@@ -52,6 +57,16 @@ class ModernbancInput @JvmOverloads constructor(
         editText.maxLines = maxLines
         editText.isSingleLine = singleLine
         editText.inputType = inputType
+
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                val text = s.toString()
+                isValid = validationFn?.invoke(text) ?: false
+            }
+        })
+
         addView(editText)
     }
 
