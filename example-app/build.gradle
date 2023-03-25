@@ -3,6 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 android {
     namespace 'com.example.myapplication'
     compileSdk 33

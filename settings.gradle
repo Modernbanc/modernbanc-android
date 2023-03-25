@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "My Application"
+rootProject.name = "Modernbanc Android SDK"
 include ':example-app'
 include ':modernbanc-android'
