@@ -1,21 +1,34 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "com.github.modernbanc"
+            artifactId = "modernbanc-android"
+            version = "0.0.2"
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
 
+    }
+    repositories {
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
 
 android {
     namespace 'com.modernbanc.android'
     compileSdk 33
 
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                from components.android
-            }
-        }
-    }
+
+
 
     defaultConfig {
         minSdk 24
