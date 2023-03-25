@@ -6,13 +6,10 @@ plugins {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        release(MavenPublication) {
             groupId = "com.github.modernbanc"
             artifactId = "modernbanc-android"
             version = "0.0.2"
-            afterEvaluate {
-                from(components["release"])
-            }
         }
 
     }
