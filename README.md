@@ -2,13 +2,17 @@
 
 Modernbanc Android is an official Android library you can use to securely collect sensitive data from your users and store it in Modernbanc's encrypted vault.
 
-##  Installation
+## Installation
+
+You can install this library via Jitpack.
 
 ### Requirements
+
 - Android 5.0+ (API level 21+)
 - AndroidX
 
 ### Gradle
+
 To install `modernbanc-android` add the following to your build.gradle;
 
 ```gradle
@@ -23,6 +27,7 @@ dependencies {
 ```
 
 ## Usage
+
 This library contains a ModernbancInput component that you can embed into your app. It is a native component that aims to mimic EditText so you can style and customize it to your liking.
 
 To use it initialize a Modernbanc API client and then pass it to the ModernbancInput.
@@ -67,8 +72,6 @@ input.setText("Hello")
 Log.d("Value is currently valid: ", input.isValid.toString()) // Should print `false`
 ```
 
-
 ### Demo app
-The project also contains a demo-app, to run it ensure that you create an substitute an API key with 'write' permission for 'secret_token' functionlaity.
- 
 
+The project also contains a demo-app, to run it ensure that you create an substitute an API key with 'write' permission for 'secret_token' functionlaity.
