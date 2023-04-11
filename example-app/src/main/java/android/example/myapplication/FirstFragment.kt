@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.CreateTokenResponse
+import android.CreateSecretResponse
 import android.MdbApiError
 import android.ModernbancApiClient
 import android.ModernbancInput
@@ -25,7 +25,7 @@ class FirstFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var parentLayout: LinearLayout
-    private lateinit var tokenLabel: TextView
+    private lateinit var secretLabel: TextView
     private val apiKey = "API key that you can find in your workspace"
     private val apiClient = ModernbancApiClient(apiKey)
     private lateinit var modernbancInput: ModernbancInput
@@ -38,7 +38,7 @@ class FirstFragment : Fragment() {
         setupLayout()
         setupModernbancInput()
         setupButton()
-        setupTokenLabel()
+        setupSecretLabel()
         return binding.root
 
     }
@@ -80,7 +80,7 @@ class FirstFragment : Fragment() {
         val button = Button(context)
 
         // Set the button's properties like text, layout parameters, etc.
-        button.text = "Create Token"
+        button.text = "Create Secret"
         val layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
@@ -89,21 +89,21 @@ class FirstFragment : Fragment() {
 
         // Set an OnClickListener for the button
         button.setOnClickListener {
-            // Call createToken method of your SecureEditText instance
-            modernbancInput?.createToken(
-                onResponse = { tokenResponse: CreateTokenResponse? ->
-                    // Handle the token response here
-                    val token = tokenResponse?.result?.firstOrNull()
-                    Log.d("CreateToken", "Token created: ${token?.id}")
+            // Call createSecret method of your SecureEditText instance
+            modernbancInput?.createSecret(
+                onResponse = { response: CreateSecretResponse? ->
+                    // Handle the secret response here
+                    val secret = response?.result?.firstOrNull()
+                    Log.d("CreateSecret", "Secret created: ${secret?.id}")
                     activity?.runOnUiThread {
-                        tokenLabel.text = "Created token with id ${tokenResponse?.result?.first()?.id}"
+                        secretLabel.text = "Created secret with id ${response?.result?.first()?.id}"
                     }
                 },
                 onFailure = { error: MdbApiError? ->
                     // Handle the error here
-                    Log.e("CreateToken", "Error: ${error?.code} - ${error?.message}")
+                    Log.e("CreateSecret", "Error: ${error?.code} - ${error?.message}")
                     activity?.runOnUiThread {
-                        tokenLabel.text = "Oops there was an error ${error.toString()}"
+                        secretLabel.text = "Oops there was an error ${error.toString()}"
                     }
                 }
             )
@@ -113,9 +113,9 @@ class FirstFragment : Fragment() {
         parentLayout?.addView(button)
     }
 
-    private fun setupTokenLabel() {
-        tokenLabel = TextView(requireContext())
-        tokenLabel.text = "Newly created token will be shown here"
+    private fun setupSecretLabel() {
+        secretLabel = TextView(requireContext())
+        secretLabel.text = "Newly created secret will be shown here"
 
         val layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -123,9 +123,9 @@ class FirstFragment : Fragment() {
         )
         layoutParams.topMargin = 16 // Set top margin to 16 pixels
         layoutParams.gravity = LinearLayout.HORIZONTAL
-        tokenLabel.layoutParams = layoutParams
+        secretLabel.layoutParams = layoutParams
 
-        parentLayout.addView(tokenLabel)
+        parentLayout.addView(secretLabel)
     }
 
     override fun onDestroyView() {

@@ -7,11 +7,11 @@ data class MdbApiError(
     @SerializedName("message") val message: String
 )
 
-data class CreateTokenResponse(
-    @SerializedName("result") val result: List<SecretToken>
+data class CreateSecretResponse(
+    @SerializedName("result") val result: List<Secret>
 )
 
-data class SecretToken(
+data class Secret(
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("workspace_id") val workspace_id: String,

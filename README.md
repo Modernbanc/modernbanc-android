@@ -37,23 +37,23 @@ val apiClient = ModernbancApiClient(apiKey)
 val modernbancInput = ModernbancInput(context = requireContext(), client = apiClient)
 ```
 
-Once the user has entered the details you can create a token from the value in the input.
+Once the user has entered the details you can create a secret from the value in the input.
 
 ```kotlin
-modernbancInput?.createToken(
-  onResponse = { tokenResponse: CreateTokenResponse? ->
-      // Handle the token response here
-      val token = tokenResponse?.result?.firstOrNull()
-      Log.d("CreateToken", "Token created: ${token?.id}")
+modernbancInput?.createSecret(
+  onResponse = { response: CreateSecretResponse? ->
+      // Handle the secret response here
+      val secret = response?.result?.firstOrNull()
+      Log.d("CreateSecret", "Secret created: ${secret?.id}")
       activity?.runOnUiThread {
-          tokenLabel.text = "Created token with id ${token?.id}"
+          secretLabel.text = "Created secret with id ${secret?.id}"
       }
   },
   onFailure = { error: MdbApiError? ->
       // Handle the error here
-      Log.e("CreateToken", "Error: ${error?.code} - ${error?.message}")
+      Log.e("CreateSecret", "Error: ${error?.code} - ${error?.message}")
       activity?.runOnUiThread {
-          tokenLabel.text = "Oops there was an error ${error.toString()}"
+          secretLabel.text = "Oops there was an error ${error.toString()}"
       }
   }
 )
@@ -74,4 +74,4 @@ Log.d("Value is currently valid: ", input.isValid.toString()) // Should print `f
 
 ### Demo app
 
-The project also contains a demo-app, to run it ensure that you create an substitute an API key with **write** permission for **secret_token** functionlaity.
+The project also contains a demo-app, to run it ensure that you create an substitute an API key with **write** permission for **secret** functionlaity.

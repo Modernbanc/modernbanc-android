@@ -70,7 +70,7 @@ class ModernbancInput @JvmOverloads constructor(
         addView(editText)
     }
 
-    fun createToken(onResponse: (CreateTokenResponse?) -> Unit, onFailure: (MdbApiError?) -> Unit) {
+    fun createSecret(onResponse: (CreateSecretResponse?) -> Unit, onFailure: (MdbApiError?) -> Unit) {
         val textValue = editText.text?.toString()
         if (textValue.isNullOrEmpty()) {
             return
@@ -80,9 +80,9 @@ class ModernbancInput @JvmOverloads constructor(
 
         client.apiCall(
             method = "POST",
-            endpoint = "/secrets/tokens",
+            endpoint = "/secrets",
             requestBody = body,
-            responseClass = CreateTokenResponse::class.java,
+            responseClass = CreateSecretResponse::class.java,
             onResponse = onResponse,
             onFailure = onFailure
         )
